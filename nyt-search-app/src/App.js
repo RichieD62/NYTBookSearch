@@ -2,15 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Navigation from "./components/Navigation"
 import Search from "./components/Search"
-import Results from "./components/Results"
+import Saved from "./components/Saved"
 
-const Saved = () => {
-  return (
-    <div>
-      Saved
-    </div>
-  )
-}
 
 class App extends Component {
 

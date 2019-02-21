@@ -23,7 +23,6 @@ var BookSchema = new Schema({
 
     image: {
         type: String,
-        required: true
     },
 
     link: {
@@ -33,6 +32,6 @@ var BookSchema = new Schema({
 
 });
 
-var Book = mongoose.model("Book", BookSchema);
+var Book = mongoose.model("book", BookSchema);
 
 module.exports = Book;

@@ -22,7 +22,6 @@ class Search extends Component {
             url: urlString,
             success: (searchResults) => {
                 console.log("Successfully fetched data")
-                console.log(searchResults)
                 const results = searchResults.items
 
 
@@ -41,7 +40,7 @@ class Search extends Component {
                     const card = <div key={book.id} className="card mb-3" >
                         <div className="row no-gutters">
                             <div className="col-md-4">
-                                <img src={book.volumeInfo.imageLinks.thumbnail} className="card-img" alt="" />
+                                <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''} className="card-img" alt="" />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
@@ -58,7 +57,7 @@ class Search extends Component {
 
                     </div>
 
-
+                    console.log(book.volumeInfo.infoLink)
 
                     bookCards.push(card)
                 })
@@ -75,14 +74,10 @@ class Search extends Component {
 
     searchChangeHandler(event) {
         const searchTerm = event.target.value
-        console.log(searchTerm)
+        this.performSearch(searchTerm)
+
     }
 
-    updateSearchTerm(onClick) {
-        console.log(event.target.value)
-        const searchTerm = event.target.value
-        this.performSearch(searchTerm)
-    }
 
     render() {
 
@@ -104,11 +99,8 @@ class Search extends Component {
                             <form>
                                 <p>Book Search</p>
                                 <div className="form-group">
-                                    <label>Book</label>
-                                    <input className="form-control" id="bookSearchBar" placeholder="Enter Book Title" onChange={this.updateSearchTerm.bind(this)} />
+                                    <input className="form-control" id="bookSearchBar" placeholder="Enter Book Title" onChange={this.searchChangeHandler.bind(this)} />
                                 </div>
-
-                                <button onClick={this.updateSearchTerm} type="submit" className="btn btn-success">Submit</button>
                             </form>
                         </div>
 
