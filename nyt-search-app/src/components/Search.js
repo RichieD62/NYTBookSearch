@@ -89,7 +89,7 @@ class Search extends Component {
 
         $.ajax({
             method: "POST",
-            url: "/",
+            url: "localhost:3001/",
             data: {
                 title: title,
                 authors: authors,
@@ -98,10 +98,10 @@ class Search extends Component {
                 link: link
             }
         })
-        .success(() => {
+        .then(() => {
             console.log("Entry saved to MongoDB")
         })
-        .err((err) => {
+        .catch((err) => {
             console.log(err)
         })
     }
