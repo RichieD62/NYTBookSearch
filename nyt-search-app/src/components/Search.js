@@ -9,7 +9,7 @@ class Search extends Component {
         console.log("Initialized")
         this.state = {
         }
-        this.performSearch("It")
+        this.postToDb = this.postToDb.bind(this)
 
     }
 
@@ -49,8 +49,8 @@ class Search extends Component {
                                     <p className="card-text"><small className="text-muted">{book.volumeInfo.authors}</small></p>
                                     <a href={book.volumeInfo.infoLink} target="_blank"><small>Click here for more information</small></a>
 
-                                </div>
-                                <button style={bookButtonStyle} type="button" className="btn btn-success pull-right">Save</button>
+                                </div>  
+                                <button onClick={() => this.postToDb(book)} style={bookButtonStyle} type="button" className="btn btn-success pull-right">Save</button>
                             </div>
 
                         </div>
@@ -72,11 +72,50 @@ class Search extends Component {
 
     }
 
+    postToDb(book) {
+
+        let title = book.volumeInfo.title;
+        let authors = book.volumeInfo.authors;
+        let description = book.volumeInfo.description;
+        let image = book.volumeInfo.imageLinks.thumbnail;
+        let link = book.volumeInfo.infoLink;
+
+        console.log("ID: " + book.id)
+        console.log("Cover Picture: " + image)
+        console.log("Title: " + title)
+        console.log("Description: " + description)
+        console.log("Author(s): " + authors)
+        console.log("Link: " + link)
+
+        $.ajax({
+            method: "POST",
+            url: "/",
+            data: {
+                title: title,
+                authors: authors,
+                description: description,
+                image: image,
+                link: link
+            }
+        })
+        .success(() => {
+            console.log("Entry saved to MongoDB")
+        })
+        .err((err) => {
+            console.log(err)
+        })
+    }
+
+    componentDidMount() {
+        this.performSearch("It")
+    }
+
     searchChangeHandler(event) {
         const searchTerm = event.target.value
         this.performSearch(searchTerm)
 
     }
+
 
 
     render() {
@@ -85,6 +124,8 @@ class Search extends Component {
             borderStyle: "solid",
             padding: "15px"
         }
+
+ 
 
         return (
             <div>

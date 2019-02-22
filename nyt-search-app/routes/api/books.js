@@ -5,12 +5,12 @@ const router = express.Router()
 const Book = require("../../models/Book")
 
 // GET api/books - get all books
-router.get("/", (req, res) => {
+router.get("/saved", (req, res) => {
   Book.find()
     .then(books => res.json(books))
 })
 
-// POST api/books - create a saved book
+// POST api/books - create a saved book - DEFINES the POST route
 router.post("/", (req, res) => {
   const newBook = new Book({
     title: req.body.title,
