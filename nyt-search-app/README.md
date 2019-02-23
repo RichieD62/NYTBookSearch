@@ -8,4 +8,4 @@ This application utilizes ReactJS, MongoDB, Mongoose, Express.js, and Node.js. I
 
 From there, the user simply has to start searching for books and saving them!
 
-I faced a number of challenges with this assignment. I had a lot of issues getting various components to work.  ReactJS but after looking at the in class materials, working with instructors, and discussing with peers, I was able to put together the app.
+I faced a number of challenges with this assignment. I had a lot of issues getting various components to work correctly. I did a lot of research online and read a lot of documentation. I also reached out to resources such as classmates, tutpes, instructors, and TAs with questions to push the project forward. After a lot of research and work, I was able to put together the app.
