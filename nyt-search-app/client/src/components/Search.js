@@ -89,7 +89,7 @@ class Search extends Component {
 
         $.ajax({
             method: "POST",
-            url: "localhost:3001/",
+            url: "/save",
             data: {
                 title: title,
                 authors: authors,
@@ -106,7 +106,7 @@ class Search extends Component {
         })
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.performSearch("It")
     }
 

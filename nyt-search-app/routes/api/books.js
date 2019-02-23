@@ -11,7 +11,7 @@ router.get("/saved", (req, res) => {
 })
 
 // POST api/books - create a saved book - DEFINES the POST route
-router.post("/", (req, res) => {
+router.post("/save", (req, res) => {
   const newBook = new Book({
     title: req.body.title,
     authors: req.body.authors,
@@ -26,7 +26,8 @@ router.post("/", (req, res) => {
 // DELETE api/books - delete a saved book
 router.delete("/:id", (req, res) => {
   Book.findById(req.params.id)
-  .then(book => book.remove().then(() => console.log("Book successfully removed")))
+  .then(book => book.remove())
+  .then(() => console.log("Book successfully removed"))
   .catch(err => console.log(err))
 })
 

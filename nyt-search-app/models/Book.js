@@ -12,13 +12,13 @@ var BookSchema = new Schema({
     authors: [
         {
             type: String,
-            required: true
+            
         }
     ],
 
     description: {
         type: String,
-        required: true
+        
     },
 
     image: {
@@ -27,7 +27,7 @@ var BookSchema = new Schema({
 
     link: {
         type: String,
-        required: true
+        
     }
 
 });

@@ -1,14 +1,16 @@
 const express = require("express");
 // const path = require("path");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001   ;
 const app = express();
 const mongoose = require("mongoose")
 const books = require("./routes/api/books");
+const cors = require("cors")
 
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -25,7 +27,7 @@ mongoose
 
 // Define API routes here
 
-app.use("/api/books", books);
+app.use(books);
 
 // Send every other request to the React app
 // Define any API routes before this runs
